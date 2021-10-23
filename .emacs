@@ -66,13 +66,14 @@
 
 ;;; Column enforce mode
 ;; set limit for columns in line
-(load-file (expand-file-name "~/.emacs.d/column-enforce-mode.el"))
-;; enable by default for CC mode
-(add-hook 'c-mode-hook 'column-enforce-mode)
-(setq column-enforce-comments t)
-;; columns with number more than 80 will be highlighted
-(setq column-enforce-column 80)
-(global-set-key "\C-cc" 'column-enforce-mode)
+(when (file-exists-p (expand-file-name "~/.emacs.d/column-enforce-mode.el"))
+  (load-file (expand-file-name "~/.emacs.d/column-enforce-mode.el"))
+  ;; enable by default for CC mode
+  (add-hook 'c-mode-hook 'column-enforce-mode)
+  (setq column-enforce-comments t)
+  ;; columns with number more than 80 will be highlighted
+  (setq column-enforce-column 80)
+  (global-set-key "\C-cc" 'column-enforce-mode))
 
 ;;; Narrowing
 ;; C-x n n Narrow down to between point and mark (narrow-to-region).
